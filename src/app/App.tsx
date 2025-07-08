@@ -1,7 +1,7 @@
 import "./app.css";
 
 import { useState } from "react";
-import { TodoForm, TodoList } from "@/components";
+import { TodoForm, TodoList, TodoFilters } from "@/components";
 
 export type Todo = {
   text: string;
@@ -16,6 +16,7 @@ export default function App() {
     { text: "Покрытие тестами", completed: false, id: 2 },
   ]);
   const [maxId, setMaxId] = useState<number>(3);
+  const [filter, setFilter] = useState<"all" | "active" | "completed">("all");
 
   const addTodo = (text: string) => {
     const newTodo: Todo = {
@@ -38,6 +39,17 @@ export default function App() {
 
   const remainingTasks = todos.filter((todo) => !todo.completed).length;
 
+  const filterTodos = () => {
+    switch (filter) {
+      case "active":
+        return todos.filter((todo) => !todo.completed);
+      case "completed":
+        return todos.filter((todo) => todo.completed);
+      default:
+        return todos;
+    }
+  };
+
   const clearCompleted = () => {
     setTodos(todos.filter((todo) => !todo.completed));
   };
@@ -47,7 +59,7 @@ export default function App() {
       <h1 className="app-title">todos</h1>
       <div className="todo-container">
         <TodoForm onAddTodo={addTodo} />
-        <TodoList todos={todos} onToggleTodo={toggleTodo} />
+        <TodoList todos={filterTodos()} onToggleTodo={toggleTodo} />
 
         <div className="todo-footer">
           <div className="status-bar">
@@ -57,6 +69,8 @@ export default function App() {
                   remainingTasks === 1 ? "item" : "items"
                 } left`}
           </div>
+
+          <TodoFilters filter={filter} setFilter={setFilter} />
 
           <button className="clear-completed" onClick={clearCompleted}>
             Clear completed
