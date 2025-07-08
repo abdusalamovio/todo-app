@@ -38,6 +38,10 @@ export default function App() {
 
   const remainingTasks = todos.filter((todo) => !todo.completed).length;
 
+  const clearCompleted = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
+  };
+
   return (
     <div className="app-container">
       <h1 className="app-title">todos</h1>
@@ -45,7 +49,19 @@ export default function App() {
         <TodoForm onAddTodo={addTodo} />
         <TodoList todos={todos} onToggleTodo={toggleTodo} />
 
-        <div className="status-bar">{remainingTasks} items left</div>
+        <div className="todo-footer">
+          <div className="status-bar">
+            {remainingTasks === 0
+              ? "No items left"
+              : `${remainingTasks} ${
+                  remainingTasks === 1 ? "item" : "items"
+                } left`}
+          </div>
+
+          <button className="clear-completed" onClick={clearCompleted}>
+            Clear completed
+          </button>
+        </div>
       </div>
     </div>
   );

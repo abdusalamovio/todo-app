@@ -29,9 +29,33 @@ body {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  border-top: 1px solid #ededed;
+}
+
 .status-bar {
   padding: 10px 20px;
   color: #777;
   font-size: 14px;
-  border-bottom: 1px solid #ededed;
+}
+
+.clear-completed {
+  padding: 10px 20px;
+  color: #777;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  font-family: inherit;
+  transition: color 0.2s ease-out;
+}
+
+.clear-completed:hover {
+  color: #4d4d4d;
+  text-decoration: underline;
 }
