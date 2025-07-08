@@ -1,0 +1,26 @@
+.todo-form {
+  width: 100%;
+  position: relative;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 16px 16px 16px 60px;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  border: none;
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.todo-input::placeholder {
+  font-style: italic;
+  color: #e6e6e6;
+}
+
+.todo-input:focus {
+  outline: none;
+  box-shadow: 0 0 2px 2px #cf7d7d;
+}

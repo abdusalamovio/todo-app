@@ -10,12 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.1.1",
-    "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.60.0",
-    "zod": "^3.25.75"
+    "react-hook-form": "^7.60.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
